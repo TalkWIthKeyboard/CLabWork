@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Configure.cpp" />
     <ClCompile Include="mainWork.cpp" />
   </ItemGroup>
   <ItemGroup>
