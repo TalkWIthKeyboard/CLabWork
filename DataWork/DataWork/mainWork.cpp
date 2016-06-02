@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Configure.h"
 #include "unwrap-shangqi.h"
+#include "unwrap-tongji.h"
 #include "compare.h"
 #include <map>
 #include <vector>
@@ -89,6 +90,7 @@ void init()
 }
 
 int main() {
+	/*
 	int left_bound,right_bound;
 	cout << "please input left_bound and right_bound :";
 		cin >> left_bound >> right_bound;
@@ -100,18 +102,16 @@ int main() {
 	init();
 	makeFeatureToFamily();
 
-	vector<vector<string>> shangqi;
-	vector<vector<string>> tongji;
-
+	vector<Configure> shangqi;
+	vector<Configure> tongji;
+	
 	for (int i = left_bound; i <= right_bound; ++i)
 	{
 		shangqi = unwrap_shangqi(i);
 		//tongji= unwrap_tongji();
-
 		//sort_compare(tongji, shangqi);
 	}
+	*/
 	
-
-	
-
+	ReadFile();
 }

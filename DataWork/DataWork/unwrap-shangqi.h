@@ -17,7 +17,7 @@
 using namespace std;
  
 
-vector<vector<string>> unwrap_shangqi(int file_index)
+vector<Configure> unwrap_shangqi(int file_index)
 {
 	stringstream ss0;
 	ss0 << file_index;
@@ -36,6 +36,8 @@ vector<vector<string>> unwrap_shangqi(int file_index)
 	vector<string> feature_s;//string for feature_s
 	vector<string> configs;//results
 	vector<vector<string>> sliced_configs;
+	vector<Configure> sorted_sliced;
+	Configure temp_config;
 	vector<int> index;
 
 	string temp, temp2, temp3, feature_o;
@@ -161,25 +163,26 @@ vector<vector<string>> unwrap_shangqi(int file_index)
 	for (unsigned i = 0; i < configs.size(); i++)//slice and sort each configuration
 	{
 		stringstream ss3(configs[i]);
-		temp_c.clear();
+		//temp_c.clear();
+		temp_config.featureArr.clear();
 		while (getline(ss3, temp, ' '))
-		{
-			
-			temp_c.push_back("_"+temp);
-			
+		{			
+			temp_config.featureArr.push_back("_"+temp);			
 		}
-		Configure config;
-		config.featureArr = temp_c;
-
-		config.featureCodeSort();
-		sliced_configs.push_back(config.featureArr)  ;
+		temp_config.featureCodeSort();
+		sorted_sliced.push_back(temp_config);
+		//Configure config;
+		//config.featureArr = temp_c;
+		
+		//config.featureCodeSort();
+		//sliced_configs.push_back(config.featureArr);
 
 	}
 
 	
-	sort(sliced_configs.begin(), sliced_configs.end());
+	sort(sorted_sliced.begin(), sorted_sliced.end());
 
-
+	/*
 	ofstream outfile(output_file_name);//output all results to txt
 	if (outfile.is_open())
 	{
@@ -199,4 +202,29 @@ vector<vector<string>> unwrap_shangqi(int file_index)
 
 
 	return sliced_configs;
+	*/
+	
+	ofstream outfile(output_file_name);//output all results to txt
+	if (outfile.is_open())
+	{
+		for (unsigned i = 0; i < sorted_sliced.size(); i++)
+		{
+			for (unsigned j = 0; j < sorted_sliced[i].featureArr.size(); j++)
+			{
+				outfile << sorted_sliced[i].featureArr[j] << " ";
+			}
+			outfile << endl;
+		}
+	}
+	else
+	{
+		cout << "Fail to open the output file!" << endl;
+	}
+
+
+	return sorted_sliced;
+
+
+
+	
 }
