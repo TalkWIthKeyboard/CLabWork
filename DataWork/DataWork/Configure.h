@@ -12,6 +12,7 @@ private:
 
 public:
 	Configure();
+	Configure(const Configure & con);
 	~Configure();
 	vector<string> featureArr;
 public:

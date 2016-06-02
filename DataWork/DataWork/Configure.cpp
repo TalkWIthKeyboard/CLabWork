@@ -11,6 +11,11 @@ Configure::~Configure()
 {
 }
 
+Configure::Configure(const Configure & con)
+{
+	featureArr.assign(con.featureArr.begin(), con.featureArr.end());
+}
+
 void Configure::featureCodeSort()
 {
 	string nowSort[1000];
