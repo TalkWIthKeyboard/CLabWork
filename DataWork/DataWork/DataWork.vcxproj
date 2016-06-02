@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configure.h" />
+    <ClInclude Include="unwrap-shangqi.h" />
+    <ClInclude Include="compare.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input1.txt" />

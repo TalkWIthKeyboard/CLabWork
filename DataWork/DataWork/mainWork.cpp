@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Configure.h"
+#include "unwrap-shangqi.h"
+#include "compare.h"
 #include <map>
 #include <vector>
 #include <algorithm>
@@ -89,4 +91,14 @@ void init()
 int main() {
 	init();
 	makeFeatureToFamily();
+
+	vector<vector<string>> shangqi;
+	vector<vector<string>> tongji;
+	shangqi=unwrap_shangqi();
+	//tongji= unwrap_tongji();
+
+	//sort_compare(tongji, shangqi);
+
+	
+
 }

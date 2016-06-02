@@ -26,6 +26,12 @@
     <ClInclude Include="Configure.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="unwrap-shangqi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="compare.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input1.txt">
