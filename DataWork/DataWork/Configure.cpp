@@ -17,7 +17,7 @@ void Configure::featureCodeSort()
 
 	for (int i = 0; i < featureArr.size(); i++)
 	{
-		nowSort[familyCodeNum[featureToFamily[featureArr[i]]]] = featureArr[i];
+		nowSort[familyCodeNum[featureToFamily[featureArr[i]]] - 1] = featureArr[i];
 	}
 
 	for (int i = 0; i < featureArr.size(); i++)

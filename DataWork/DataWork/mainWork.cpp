@@ -8,7 +8,7 @@
 
 using namespace std;
 #pragma warning(disable:4996)
-
+const int maxbound = 228;
 char str[100];
 int familyNum;
 map<string, string> featureToFamily;
@@ -89,15 +89,28 @@ void init()
 }
 
 int main() {
+	int left_bound,right_bound;
+	cout << "please input left_bound and right_bound :";
+		cin >> left_bound >> right_bound;
+		while ((left_bound<0) || (right_bound>maxbound) || (left_bound > right_bound))
+		{
+			cout << "please input left_bound and right_bound :";
+			cin >> left_bound >> right_bound;
+		}
 	init();
 	makeFeatureToFamily();
 
 	vector<vector<string>> shangqi;
 	vector<vector<string>> tongji;
-	shangqi=unwrap_shangqi();
-	//tongji= unwrap_tongji();
 
-	//sort_compare(tongji, shangqi);
+	for (int i = left_bound; i <= right_bound; ++i)
+	{
+		shangqi = unwrap_shangqi(i);
+		//tongji= unwrap_tongji();
+
+		//sort_compare(tongji, shangqi);
+	}
+	
 
 	
 

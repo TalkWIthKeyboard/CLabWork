@@ -15,10 +15,17 @@
 #include<algorithm>
 #include "Configure.h"
 using namespace std;
-const string input_file_name = "0.csv";
+ 
 
-vector<vector<string>> unwrap_shangqi()
+vector<vector<string>> unwrap_shangqi(int file_index)
 {
+	stringstream ss0;
+	ss0 << file_index;
+	  string s1 = ss0.str();
+	string input_file_name = s1+".csv";
+
+	string output_file_name= "shangqi_unwarped_sorted_"+s1 + ".txt";
+
 	int num = 0;//check the # of column
 	vector<string> one_feature_o;
 	vector<vector<string>> all_feature_o;//
@@ -173,7 +180,7 @@ vector<vector<string>> unwrap_shangqi()
 	sort(sliced_configs.begin(), sliced_configs.end());
 
 
-	ofstream outfile("output.txt");//output all results to txt
+	ofstream outfile(output_file_name);//output all results to txt
 	if (outfile.is_open())
 	{
 		for (unsigned i = 0; i < sliced_configs.size(); i++)
