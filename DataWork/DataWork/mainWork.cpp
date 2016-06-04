@@ -16,7 +16,6 @@ map<string, string> featureToFamily;
 vector<string> familyVector;
 map<string, int> familyCodeNum;
 
-
 //处理input1文件字符串
 void workStr()
 {
@@ -63,7 +62,6 @@ void workStr()
 	featureToFamily[*feature] = *family;
 }
 
-
 //构建feature到family的映射
 void makeFeatureToFamily()
 {
@@ -90,7 +88,6 @@ void init()
 }
 
 int main() {
-	/*
 	int left_bound,right_bound;
 	cout << "please input left_bound and right_bound :";
 		cin >> left_bound >> right_bound;
@@ -108,10 +105,7 @@ int main() {
 	for (int i = left_bound; i <= right_bound; ++i)
 	{
 		shangqi = unwrap_shangqi(i);
-		//tongji= unwrap_tongji();
-		//sort_compare(tongji, shangqi);
+		tongji = unwrap_tongji(i);
+		sort_compare(tongji, shangqi);
 	}
-	*/
-	
-	ReadFile();
 }
