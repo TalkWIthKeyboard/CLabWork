@@ -10,26 +10,27 @@
 #include <cstring>
 #include <vector>
 #include <algorithm>
+#include "Configure.h"
 using namespace std;
 
 
-int sort_compare(vector<vector<string>>tongji, vector<vector<string>>shangqi)
+int sort_compare(vector<Configure>tongji, vector<Configure>shangqi)
 {
 	
-	vector<vector<string>> tongji_extra;
-	vector<vector<string>> shangqi_extra;
+	vector<Configure> tongji_extra;
+	vector<Configure> shangqi_extra;
 	string line;
 
 	//sort(tongji, max_size);
 	sort(tongji.begin(), tongji.end());
 	sort(shangqi.begin(), shangqi.end());
 
-	vector<vector<string>>::iterator cmp1 = shangqi.begin();
-	vector<vector<string>>::iterator cmp2 = tongji.begin();
+	vector<Configure>::iterator cmp1 = shangqi.begin();
+	vector<Configure>::iterator cmp2 = tongji.begin();
 	int counter = 0;
 	while ((cmp2 != tongji.end()) && (cmp1 != shangqi.end()))
 	{
-		if (*cmp2 > *cmp1)
+		if (*cmp1 < *cmp2)
 		{
 			shangqi_extra.push_back(*cmp1);
 			cmp1++;
@@ -75,9 +76,9 @@ int sort_compare(vector<vector<string>>tongji, vector<vector<string>>shangqi)
 	{
 		for (unsigned i = 0; i < tongji_extra.size(); i++)
 		{
-			for (unsigned j = 0; j < tongji_extra[i].size(); j++)
+			for (unsigned j = 0; j < tongji_extra[i].featureArr.size(); j++)
 			{
-				outfile << tongji_extra[i][j] << " ";
+				outfile << tongji_extra[i].featureArr[j] << " ";
 			}
 			outfile << endl;
 		}
@@ -93,9 +94,9 @@ int sort_compare(vector<vector<string>>tongji, vector<vector<string>>shangqi)
 	{
 		for (unsigned i = 0; i < shangqi_extra.size(); i++)
 		{
-			for (unsigned j = 0; j < shangqi_extra[i].size(); j++)
+			for (unsigned j = 0; j < shangqi_extra[i].featureArr.size(); j++)
 			{
-				outfile << shangqi_extra[i][j] << " ";
+				outfile << shangqi_extra[i].featureArr[j] << " ";
 			}
 			outfile << endl;
 		}
