@@ -14,11 +14,9 @@
 using namespace std;
 
 
-int sort_compare(vector<Configure>tongji, vector<Configure>shangqi)
+int sort_compare(vector<Configure>tongji, vector<Configure>shangqi,int num)
 {
-	
-	vector<Configure> tongji_extra;
-	vector<Configure> shangqi_extra;
+	vector<int> shangqi_ex, tongji_ex;
 	string line;
 
 	//sort(tongji, max_size);
@@ -27,85 +25,66 @@ int sort_compare(vector<Configure>tongji, vector<Configure>shangqi)
 
 	vector<Configure>::iterator cmp1 = shangqi.begin();
 	vector<Configure>::iterator cmp2 = tongji.begin();
-	int counter = 0;
+	int tongji_counter = 0, shangqi_counter = 0;
 	while ((cmp2 != tongji.end()) && (cmp1 != shangqi.end()))
 	{
 		if (*cmp1 < *cmp2)
 		{
-			shangqi_extra.push_back(*cmp1);
 			cmp1++;
-			++counter;
-			cout << counter << endl;
+			shangqi_counter++;
+			shangqi_ex.push_back(shangqi_counter);
 		}
 		else if (*cmp2 < *cmp1)
 		{
-			tongji_extra.push_back(*cmp2);
 			cmp2++;
-
+			tongji_counter++;
+			tongji_ex.push_back(tongji_counter);
 		}
 		else
 		{
 			cmp2++;
+			tongji_counter++;
 			cmp1++;
-			++counter;
+			shangqi_counter++;
 		}
 	}
 	if (cmp1 != shangqi.end())
 	{
 		while (cmp1 != shangqi.end())
 		{
-			shangqi_extra.push_back(*cmp1);
-			++cmp1;
-			++counter;
-			cout << counter << endl;
+			cmp1++;
+			shangqi_counter++;
+			shangqi_ex.push_back(shangqi_counter);
 		}
 	}
 	if (cmp2 != tongji.end())
 	{
 		while (cmp2 != tongji.end())
 		{
-			tongji_extra.push_back(*cmp2);
-			++cmp2;
-
+			cmp2++;
+			tongji_counter++;
+			tongji_ex.push_back(tongji_counter);
 		}
 	}
 
+	fprintf(stderr, "上汽多出：%d  同济多出：%d\n\n", shangqi_ex.size(), tongji_ex.size());
 
-	ofstream outfile("out_tongji31.txt");
-	if (outfile.is_open())
+	char filename[20];
+	sprintf(filename, "tongji_extra_%d.txt", num);
+	freopen(filename, "w", stdout);
+	for (int i = 0; i < tongji_ex.size(); i++)
 	{
-		for (unsigned i = 0; i < tongji_extra.size(); i++)
-		{
-			for (unsigned j = 0; j < tongji_extra[i].featureArr.size(); j++)
-			{
-				outfile << tongji_extra[i].featureArr[j] << " ";
-			}
-			outfile << endl;
-		}
-		outfile.close();
+		printf("%d\n", tongji_ex[i]);
 	}
-	else
-	{
-		cout << "Fail to open the output file!" << endl;
-	}
+	fclose(stdout);
 
-	ofstream outfile1("out_shangqi31.txt");
-	if (outfile1.is_open())
+	sprintf(filename, "shangqi_extra_%d.txt", num);
+	freopen(filename, "w", stdout);
+	for (int i = 0; i < shangqi_ex.size(); i++)
 	{
-		for (unsigned i = 0; i < shangqi_extra.size(); i++)
-		{
-			for (unsigned j = 0; j < shangqi_extra[i].featureArr.size(); j++)
-			{
-				outfile << shangqi_extra[i].featureArr[j] << " ";
-			}
-			outfile << endl;
-		}
-		outfile1.close();
+		printf("%d\n", shangqi_ex[i]);
 	}
-	else
-	{
-		cout << "Fail to open the output file!" << endl;
-	}
+	fclose(stdout);
 
 	/*
 	ofstream outfile2("sort_tongji31.txt");

@@ -89,11 +89,11 @@ void init()
 
 int main() {
 	int left_bound,right_bound;
-	cout << "please input left_bound and right_bound :";
+	cout << "请输入要检查的编号区间:";
 		cin >> left_bound >> right_bound;
 		while ((left_bound<0) || (right_bound>maxbound) || (left_bound > right_bound))
 		{
-			cout << "please input left_bound and right_bound :";
+			cout << "请输入要检查的编号区间:";
 			cin >> left_bound >> right_bound;
 		}
 	init();
@@ -104,8 +104,12 @@ int main() {
 	
 	for (int i = left_bound; i <= right_bound; ++i)
 	{
+		fprintf(stderr, "开始处理第%d个车型\n", i);
+		fprintf(stderr, "开始展开上汽方的压缩配置文件\n");
 		shangqi = unwrap_shangqi(i);
+		fprintf(stderr, "开始展开同济方的压缩配置文件\n");
 		tongji = unwrap_tongji(i);
-		sort_compare(tongji, shangqi);
+		fprintf(stderr, "开始比较双方的结果\n");
+		sort_compare(tongji, shangqi,i);
 	}
 }

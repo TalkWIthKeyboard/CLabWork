@@ -44,4 +44,5 @@ bool operator<(const Configure& con1, const Configure& con2)
 			return false;
 		}
 	}
+	return false;
 }
