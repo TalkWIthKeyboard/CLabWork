@@ -1,5 +1,4 @@
 # CLabWork
-# CLabDataWork
 ## 运行环境
 windows + vs2015 **x64位环境**
 ## 功能介绍
